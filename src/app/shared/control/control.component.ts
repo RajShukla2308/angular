@@ -33,12 +33,14 @@ export class ControlComponent {
   }
 
   constructor(){
+    // after anything changes in whole application
     afterRender(()=>{
-      console.log('after render')
+     // console.log('after render')
     })
 
+    //after anything next changes in whole application
     afterNextRender(()=>{
-      console.log('after next render')
+     // console.log('after next render')
     })
   }
 
