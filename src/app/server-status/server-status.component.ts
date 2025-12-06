@@ -8,6 +8,23 @@ import { DashboardItemComponent } from "../dashboard/dashboard-item/dashboard-it
   styleUrl: './server-status.component.css'
 })
 export class ServerStatusComponent {
-  currentStatus = 'online';
+  currentStatus: 'online' | 'offline' | 'unknown' = 'online';
+
+  constructor(){
+    setInterval(() => {
+
+      const random = Math.random(); // 0 -0.99999
+
+      if(random < 0.5){
+        this.currentStatus = 'online';
+      }else if(random < 0.9){
+        this.currentStatus = 'offline';
+      }
+      else{
+        this.currentStatus = 'unknown';
+      }
+      
+    }, 5000);
+  }
 
 }
