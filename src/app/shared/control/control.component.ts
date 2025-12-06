@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
+import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -20,8 +20,16 @@ export class ControlComponent {
   // }
   label = input.required();
 
+
+  // content child
+  //@ContentChild('inputForContentChild') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
+
+  // content child with signal
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('inputForContentChild')
+
   onClick(){
-  
+   // console.log(this.control)
+   console.log(this.control()) // in signal use ().
   }
 
 }
