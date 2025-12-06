@@ -20,4 +20,8 @@ export class ControlComponent {
   // }
   label = input.required();
 
+  onClick(){
+  
+  }
+
 }
