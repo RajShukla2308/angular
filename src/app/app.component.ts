@@ -20,7 +20,7 @@ export class AppComponent {
   trafficImgData = { src:"globe.png", alt:"A globe" };
   trafficHeading = "Traffic";
 
-  ticketsImgData = { src:"list.png" , alt:"A list of items" }
-  ticketsHeading = 'Support Tickets'
+  supportTicketsData = { src:"list.png" , alt:"A list of items" }
+  supportTicketsHeading = 'Support Tickets'
  
 }
