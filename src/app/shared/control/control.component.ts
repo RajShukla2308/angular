@@ -1,4 +1,4 @@
-import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
+import { afterNextRender, afterRender, Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -29,7 +29,17 @@ export class ControlComponent {
 
   onClick(){
    // console.log(this.control)
-   console.log(this.control()) // in signal use ().
+   // console.log(this.control()) // in signal use ().
+  }
+
+  constructor(){
+    afterRender(()=>{
+      console.log('after render')
+    })
+
+    afterNextRender(()=>{
+      console.log('after next render')
+    })
   }
 
 }

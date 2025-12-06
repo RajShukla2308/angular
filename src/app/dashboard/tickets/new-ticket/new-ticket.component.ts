@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
 import { ButtonComponent } from "../../../shared/button/button.component";
 import { ControlComponent } from "../../../shared/control/control.component";
 import { FormsModule } from '@angular/forms';
@@ -10,17 +10,28 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './new-ticket.component.html',
   styleUrl: './new-ticket.component.css'
 })
-export class NewTicketComponent {
+export class NewTicketComponent implements OnInit, AfterViewInit{
 
- // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+  @ViewChild('form') form?: ElementRef<HTMLFormElement>;
 
  // viewchild signal 
- private form = viewChild.required<ElementRef<HTMLFormElement>>('form')
+ // private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+
+  ngOnInit() {
+    // try  to access form, will not be aceessible here - NORMAL CASE WHEN NOT USING SIGNALS
+    // IF we use signals, we will be able to access here as well.
+    console.log(this.form?.nativeElement)
+  }
+
+  ngAfterViewInit() {
+    // try  to access form, will be aceessible here
+   // console.log(this.form?.nativeElement)
+  }
 
   onSubmit(titleInput:string,request:string){
-    console.log('form submitted', titleInput, request);
+   // console.log('form submitted', titleInput, request);
 
-    this.form()?.nativeElement.reset();
+    this.form?.nativeElement.reset();
   }
 
 }
