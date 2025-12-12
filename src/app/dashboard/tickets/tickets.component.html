@@ -9,7 +9,7 @@
 
     @for(ticket of tickets; track ticket.id){
       <li>
-        <app-ticket [data]="ticket"></app-ticket>
+        <app-ticket [data]="ticket" (closeTicket)="onCloseTicket($event)"></app-ticket>
         <!-- we can use {{$first}}, {{$even}}, {{$odd}}, {{$count}} functionality here -->
       </li>
     }
