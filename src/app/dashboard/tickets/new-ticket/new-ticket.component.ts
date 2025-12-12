@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, output, viewChild, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, output, signal, viewChild, ViewChild } from '@angular/core';
 import { ButtonComponent } from "../../../shared/button/button.component";
 import { ControlComponent } from "../../../shared/control/control.component";
 import { FormsModule } from '@angular/forms';
@@ -19,6 +19,9 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
  // viewchild signal 
  // private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
 
+ enteredTitle = signal('');
+ enteredText = signal('');
+
   ngOnInit() {
     // try  to access form, will not be aceessible here - NORMAL CASE WHEN NOT USING SIGNALS
     // IF we use signals, we will be able to access here as well.
@@ -30,11 +33,14 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
    // console.log(this.form?.nativeElement)
   }
 
-  onSubmit(titleInput:string,request:string){
+  onSubmit(){
    // console.log('form submitted', titleInput, request);
-    this.addTicket.emit({title:titleInput, text: request})
+    this.addTicket.emit({title:this.enteredTitle(), text: this.enteredText()})
 
-    this.form?.nativeElement.reset();
+   // this.form?.nativeElement.reset();
+
+   this.enteredText.set('');
+   this.enteredTitle.set('');
   }
 
 }
