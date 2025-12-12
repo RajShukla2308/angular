@@ -3,4 +3,24 @@
       <img src="list.png" alt="A list of items" />
       <h2>Support Tickets</h2>
     </header> -->
-      <app-new-ticket />
+
+<div>
+  <ul>
+
+    @for(ticket of tickets; track ticket.id){
+      <li>
+        <app-ticket></app-ticket>
+        <!-- we can use {{$first}}, {{$even}}, {{$odd}}, {{$count}} functionality here -->
+      </li>
+    }
+    @empty {
+      <p>No tickets are available</p>
+    }
+  </ul>
+</div>
+      <app-new-ticket 
+      (addTicket)="addTicket($event)"
+      />
+
+
+  

@@ -14,11 +14,11 @@ export class ServerStatusComponent implements OnInit {
 
   constructor(){
 
-    console.log(this.currentStatus()) // it will just log initial value of current status
+    // console.log(this.currentStatus()) // it will just log initial value of current status
 
-    effect(()=>{
-      console.log(this.currentStatus()) // it will log the value whenever the status changes.
-    })
+    // effect(()=>{
+    //   console.log(this.currentStatus()) // it will log the value whenever the status changes.
+    // })
   }
 
   ngOnInit(): void {
