@@ -9,7 +9,7 @@
 
     @for(ticket of tickets; track ticket.id){
       <li>
-        <app-ticket></app-ticket>
+        <app-ticket [data]="ticket"></app-ticket>
         <!-- we can use {{$first}}, {{$even}}, {{$odd}}, {{$count}} functionality here -->
       </li>
     }
@@ -18,9 +18,12 @@
     }
   </ul>
 </div>
-      <app-new-ticket 
-      (addTicket)="addTicket($event)"
-      />
+
+<div id="new-ticket">
+  <app-new-ticket 
+  (addTicket)="addTicket($event)"
+  />
+</div>
 
 
   
